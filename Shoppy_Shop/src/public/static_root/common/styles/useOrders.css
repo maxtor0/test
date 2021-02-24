@@ -1,0 +1,13 @@
+.orderImg{
+    max-width: 40px; 
+    object-fit: contain; 
+    margin-right: 4px;
+}
+
+.orderBtns{
+    margin-left: 4px;
+}
+
+.orderBtn{
+    margin-left: 4px;
+}

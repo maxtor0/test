@@ -1,0 +1,103 @@
+.navbar{
+    background-color: #1a334e !important; 
+}
+
+.navbar-toggler{
+    color: white !important;
+    background-color: white !important;
+}
+
+.profile-pic{
+    margin-right: 10px;
+}
+
+.headerImg1{
+    width: 40px;
+    border-radius: 50%;
+    border: 2px solid #3B5998;
+    object-fit: fill;
+}
+
+.headerImg2{
+    width: 40px;
+    border-radius: 50%;
+    object-fit: fill;
+}
+
+.profile p{
+    color: white;
+}
+
+.profile h3{
+    font-size: larger;
+    margin: 0;
+}
+
+.logo{
+    margin-left: 40px;
+}
+
+.bi-search ,.bi-person-fill ,.bi-heart-fill , .bi-cart{
+    color: white;
+    margin-right: 10px;
+}
+
+
+.headerH5{
+    display: inline-block;
+}
+
+
+.logo:hover ,.bi-search:hover ,.bi-person-fill:hover ,.bi-heart-fill:hover , .bi-cart:hover{
+    transition: all 200ms ease-in-out;
+    /* color:  rgb(160, 160, 160) !important; */
+    color:  rgb(121, 121, 121) !important;
+}
+
+.logo:hover .headerLogoImg{
+    opacity: 0.7;
+}
+
+
+.logo ,.bi-search ,.bi-person-fill ,.bi-heart-fill , .bi-cart{
+    color: white !important;
+    font-family: 'cardo';
+}
+.profile p{
+    font-size: small;
+    margin: 0;
+}
+.profile{
+    margin-right: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-icons{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.headerLinkColor{
+    color: #1a334e !important;
+}
+
+.HomeBottonMargin{
+    margin-left: 8px;
+}
+
+.profile-p{
+    margin-left: 8px !important;
+}
+
+.headerLogoImg{
+    transition: all ease-in-out 200ms;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #3B5998;
+    border-radius: 50%;
+    object-fit: fill;
+}

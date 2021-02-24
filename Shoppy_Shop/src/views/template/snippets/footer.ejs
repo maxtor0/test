@@ -1,0 +1,90 @@
+<footer>
+    <div class="container-fluid">
+        <div class="row mainColor">
+            <div class="col col-lg-4">
+                <div class="links-top">
+                    <h6>Popular Searches</h6>
+                    <a href="items/dress_123">Print Dress</a>
+                    <a href="items/sneaker_1">Sneakers</a>
+                    <a href="items/shirt_1">Leaf Shirt</a>
+                    <a href="items/bag_2">Leather Bag</a>
+                </div>
+            </div>
+            <div class="col col-lg-4">
+                <div class="links-top">
+                    <h6>My Account</h6>
+                    <% if(!session.isAuth) { %>
+                    <a href="/login">Log in / Register</a>
+                    <% } %>
+                    <% if(session.isAuth) { %>
+                    <a href="/mycart">My Shopping Cart</a>
+                    <a href="#">My Orders</a>
+                    <a href="/profile">Account settings</a>
+                    <% } %>
+                </div>
+            </div>
+            <div class="col col-lg-4">
+                <div class="links-top margin-top-icons">
+                    <h6>Follow US</h6>
+                    <div class="footer-icons">
+                        <div class="m-1">
+                            <a href="#" class="fa fa-facebook"></a>
+                        </div>
+                        <div class="m-1">
+                            <a href="#" class="fa fa-twitter"></a>
+                        </div>
+                        <div class="m-1">
+                            <a href="#" class="fa fa-youtube"></a>
+                        </div>
+                        <div class="m-1">
+                            <a href="#" class="fa fa-pinterest"></a>
+                        </div>
+                        <div class="m-1">
+                            <a href="#" class="fa fa-instagram"></a>
+                        </div>
+                        <div class="m-1">
+                            <a href="#" class="fa fa-google-plus"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bottomFooter">
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="links-bottom">
+                    <h4>Useful Links</h4>
+                    <a href="/">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">FAQs ,News ,Updates</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="links-bottom">
+                    <h4>Legal Information</h4>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms and Conditions</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="links-bottom">
+                    <h4>Contact us</h4>
+                    <a href="#">Support</a>
+                    <% if(!session.user) { %>
+                        <a href="/admin/login">Staff Login</a>
+                    <% } %>
+                    <% if(session.user && session.user.role_id===1) { %>
+                        <a href="/admin">Admin Control</a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="copyright">
+                <hr class="abdHR" />
+                <p class="abdp">&copy; 2021-Shoppy Store All Rights Reserved</p>
+            </div>
+        </div>
+    </div>
+</footer>

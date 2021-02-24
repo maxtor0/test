@@ -1,0 +1,196 @@
+<%- contentFor('title') %>
+    Add Product
+
+<%- contentFor("styles") %>
+    <!-- For CSS -->
+    <link rel="stylesheet" href="/static/common/styles/adminAdd.css">
+
+
+<%- contentFor('content') %>
+    <div class="container">
+        <div class="mainAddProduct bg-secondary" style="margin-top: 20px;">
+            <form method="POST" enctype="multipart/form-data" id="add_product_form">
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-lg-6">
+                            <h2 class="addH2">Add New Product:</h2>
+                            <label class="text-warning addProductLabel">*Owner ID:</label>
+                            <input type="text" class="form-control" value="<%= session.user.id %>" disabled>
+                            <label class="text-warning addProductLabel">*Product Name:</label>
+                            <input type="text" name="name" id="name" class="form-control bg-light" required>
+                            <label class="text-warning addProductLabel">*Price:-$</label>
+                            <input type="number" name="price" id="price" min="1" class="form-control bg-light" required>
+                            <label class="text-warning addProductLabel">Description:</label>
+                            <textarea class="form-control bg-light" name="description" id="description" rows="3"></textarea>
+                            <br>
+                            <div class="btn-group btn-group-toggle adminEditAv" data-toggle="buttons">
+                                <h5 class="text-warning" style="margin-right: 10px;">*Availability:</h5>
+                                <label class="btn btn-info active">
+                                <input type="radio" value="1" id="is_available" name="is_available" checked>Yes
+                                </label>
+                                <label class="btn btn-info">
+                                <input type="radio" value="0" id="is_available" name="is_available">No
+                                </label>
+                            </div>
+                            <br>
+                            <label class="text-warning addProductLabel">*Stock:</label>
+                            <input type="number" name="stock" id="stock" min="1" class="form-control bg-light" required>
+                        </div>
+                        <div class="col col-lg-6">
+                            <h2 class="addH2 productImage">Add Image:</h2>
+                            <div class="productImgs">
+                                <p>
+                                    <a class="btn btn-primary tgleInputImgs" data-toggle="collapse" 
+                                        href="#collapseExample" role="button" aria-expanded="false" 
+                                            aria-controls="collapseExample" onclick="myFunction()">
+                                        Click to add a live photo <i class="bi bi-arrow-down-square-fill"></i>
+                                    </a>
+                                </p>
+                                <div id="productinputImgs">
+                                    <input class="productImg" type="file" accept="image/*" name="photos">
+                                    <input class="productImg" type="file" accept="image/*" name="photos">
+                                    <input class="productImg" type="file" accept="image/*" name="photos">
+                                </div>
+                                <!-- <label class="text-warning addProductLabel1">Have a camera ? </label> -->
+                                <!-- <p>
+                                    <a class="btn btn-primary tgleInputImgs" data-toggle="collapse" 
+                                        href="#collapseExample" role="button" aria-expanded="false" 
+                                            aria-controls="collapseExample" onclick="myFunction()">
+                                        Click to add a live photo <i class="bi bi-arrow-down-square-fill"></i>
+                                    </a>
+                                </p> -->
+                                <div class="collapse" id="collapseExample">
+                                    <div class="card card-body">
+                                        <div class="col-12">
+                                            <video id="camera" class="productCam" autoplay></video>
+                                        </div>
+                                        <div class="col-12 ">
+                                            <canvas class="canvDiv"></canvas>
+                                        </div>
+                                        <button type="button" class="btn btn-info w-100" 
+                                            id="takeScreenshot">Take ScreenShot</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 productSubmitBtn w-100">
+                            <button id="submit" type="submit" class="btn btn-primary w-50 btn-md"
+                            style="margin-top: 8px;">Add Product</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="custom-model-main">
+        <div class="custom-model-inner">
+            <!-- <div class="close-btn">×</div> -->
+            <div class="custom-model-wrap">
+                <div class="pop-up-content-wrap text-success">
+                    <h2 class="">Confirmation</h2>
+                    <div style="display: flex;align-items: center; justify-content: space-evenly;">
+                        <p>Product Added successfully   </p>
+                        <h2 style="display: inline-block;"><i class="bi bi-patch-check-fill"></i></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-overlay"></div>
+    </div>
+
+<%- contentFor('scripts') %>
+<!-- For scripts -->
+<script>
+        let screenschot = false;
+        const canvas = document.querySelector("canvas");
+        const form = document.getElementById("add_product_form");
+        const images = document.getElementById("productinputImgs");
+        const sendData =  function(event) {
+            event.preventDefault();
+            if(images.style.display === "none"){
+                console.log("ENTEEEEEEEEEEEEEEEEEERED");
+                const name = document.querySelector("#name");
+                const price = document.querySelector("#price");
+                const description = document.querySelector("#description");
+                const stock = document.querySelector("#stock");
+                const is_available = document.querySelector("#is_available");
+                const formData  = new FormData();
+                formData.append("name", name.value);
+                formData.append("price", price.value);
+                formData.append("description", description.value);
+                formData.append("stock", stock.value);
+                formData.append("is_available", is_available.value);
+                formData.append("photos", canvas.toDataURL('image/png'));
+                fetch("/admin/addproduct", {
+                    method: 'POST',
+                    body: formData
+                }).then(() =>{
+                    setTimeout(() => {
+                        location.href = location.href;
+                    }, 1500)
+                })
+                .catch(console.log)
+            }else{
+                console.log("YES");
+                form.removeEventListener("submit", sendData);
+                const recall = () => setTimeout(() => {
+                    console.log("try");
+                    form.submit.click()
+                    form.addEventListener("submit", sendData);
+                }, 1500);
+                recall();
+            }
+
+        };
+        form.addEventListener("submit", sendData);
+        async function videoTask(){
+
+
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+            let video = document.getElementById("camera");
+            video.srcObject = await navigator.mediaDevices.getUserMedia({video: true, audio: false});
+        }
+        document.getElementById("takeScreenshot").addEventListener("click", (event) => {
+            screenshot = true;
+            let video = document.getElementById("camera");
+            
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext("2d").drawImage(video, 0, 0);
+            
+        })
+
+    }
+    const main =  () => {
+        videoTask();
+    };
+
+    main();
+
+    function myFunction() {
+        
+        if (images.style.display === "none") {
+            images.style.display = "block";
+        } else {
+            images.style.display = "none";
+        }
+    }
+</script>
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script>
+    // $("#AddBtn").on('click', function() {
+    //     $(".custom-model-main").addClass('model-open');
+    // }); 
+    // $(".close-btn, .bg-overlay").click(function(){
+    //     $(".custom-model-main").removeClass('model-open');
+    // });
+
+    $('#add_product_form').submit(function(e){
+        $(".custom-model-main").addClass('model-open');
+        }); 
+        $(".close-btn, .bg-overlay").click(function(){
+            $(".custom-model-main").removeClass('model-open');
+        console.log("submitted"); 
+    });
+</script>

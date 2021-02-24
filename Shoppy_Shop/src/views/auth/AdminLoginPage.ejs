@@ -1,0 +1,25 @@
+<%- contentFor("styles") -%>
+    <link href="/static/common/styles/AdminLoginPage.css" rel="stylesheet" />
+
+
+    <%- contentFor("title") -%>
+        Admin Login
+
+        <%- contentFor("content") -%>
+            <div class="wrapper fadeInDown">
+                <div id="formContent" class="bg-dark">
+
+                    <div class="fadeIn first">
+                        <h1 class="text-light">Admin Login</h1>
+                    </div>
+
+                    <form method="post">
+                        <input type="text" id="login" class="fadeIn second" name="username"
+                            placeholder="Username or Email" required>
+                        <input type="password" id="password" class="fadeIn third" name="password" 
+                        placeholder="Password" required>
+                        <input type="submit" class="fadeIn fourth" value="Log In">
+                    </form>
+
+                </div>
+            </div>

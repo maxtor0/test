@@ -1,0 +1,76 @@
+<%- contentFor("title") %>
+Home Page
+
+
+<%- contentFor("styles") %>
+<!-- For CSS -->
+<link rel="stylesheet" href="/static/common/styles/home.css">
+
+
+<%- contentFor("content") %>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 mb-4">
+            <div class="homeParent1" onclick="location.href='/listProducts?type=2021-collection';">
+                <img class="homeIMGTop1" src="/static/common/images/abd/pic1.jpg">
+                <div class="homeTopDiv1">
+                    <h2 class="homeH">New 2021 collection</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-12 col-lg-4 mb-4 d-flex justify-content-center">
+            <div class="homeParent2">
+                <img class="homeIMGTop2" src="/static/common/images/abd/pic2t.jpg">
+                <div class="homeTopDiv2">
+                    <i class="fas homeArrowup fa-arrow-down fa-2x"></i>
+                    <p class="homePTop">Enjoy An Extra</p>
+                    <h2 class="homeHTop">50% OFF</h2>
+                    <i class="fas homeArrowdw fa-arrow-up fa-2x"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-4" onclick="location.href='/listProducts?type=womenswatch';">
+            <div class="homeParent3">
+                <img class="homeIMGMid1" src="/static/common/images/abd/product-46.jpg">
+                <div class="homeMidDiv1">
+                    <h4 class="homeH">Watch collection</h4>
+                    <p class="homeP">Shop Now <i class="bi bi-arrow-right-square-fill  edit-square"></i></p>
+                </div>
+            </div>
+        </div>
+        <div class="col col-lg-4" onclick="location.href='/listProducts?type=womensdress';">
+            <div class="homeParent3">
+                <img class="homeIMGMid1" src="/static/common/images/abd/womens-coll.jpg">
+                <div class="homeMidDiv1">
+                    <h4 class="homeH">Women's collection</h4>
+                    <p class="homeP">Shop Now <i class="bi bi-arrow-right-square-fill  edit-square"></i></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4" onclick="location.href='/listProducts?type=sneakers';">
+            <div class="homeParent3">
+                <img class="homeIMGMid1" src="/static/common/images/abd/product-47.jpg">
+                <div class="homeMidDiv1">
+                    <h4 class="homeH">Men's Sneaker</h4>
+                    <p class="homeP">Shop Now <i class="bi bi-arrow-right-square-fill  edit-square"></i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex flex-column home-center align-items-center justify-content-center">
+        <h2>New Arrivals</h2>
+        <h4><i class="bi bi-arrow-down-square-fill"></i></h4>
+    </div>
+    <div class="row mb-4">
+        
+        <% products.forEach(product => { %>
+            <%- include("../item/snippets/item.ejs", {product:product}) %>
+        <% }); %>
+        
+    </div>
+</div>
+
+<%- contentFor('script') -%>
+<script src="https://kit.fontawesome.com/7f1419bc41.js" crossorigin="anonymous"></script>

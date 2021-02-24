@@ -1,0 +1,229 @@
+<%- contentFor('title') %>
+    Profile
+
+<%- contentFor("styles") %>
+    <!-- For CSS -->
+    <link rel="stylesheet" href="/static/common/styles/profile.css">
+    <link rel="stylesheet" href="/static/common/styles/confirm.css">
+
+<%- contentFor('content') %>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <h2 class="profileH2">My Account</h2>
+            </div>
+            <div class="col col-md-4">
+                <div class="list-group">
+                    <a href="/profile" class="list-group-item list-group-item-action noBORDER-RL active">
+                        <div class="d-flex flex-row justify-content-between">
+                            <p class="profileP">Personal Info</p>
+                            <i class="bi bi-caret-right profile-icon"></i>
+                        </div>
+                    </a>
+                    <a href="/profile/orders" class="list-group-item list-group-item-action noBORDER-RL">
+                        <div class="d-flex flex-row justify-content-between">
+                            <p class="profileP">My Orders</p>
+                            <i class="bi bi-caret-right profile-icon"></i>
+                        </div>
+                    </a>
+                    <a href="/mycart" class="list-group-item list-group-item-action noBORDER-RL">
+                        <div class="d-flex flex-row justify-content-between">
+                            <p class="profileP">My Cart</p>
+                            <i class="bi bi-caret-right profile-icon"></i>
+                        </div>
+                    </a>
+                    <a href="/logout" class="list-group-item list-group-item-action noBORDER-RL">
+                        <div class="d-flex flex-row justify-content-between">
+                            <p class="profileP">Logout</p>
+                            <i class="bi bi-caret-right profile-icon"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-12 col-md-8">
+                <form method="POST" enctype="multipart/form-data" id="add_profile_form">
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <label>User Name *</label>
+                            <input type="text" name="username" id="username" class="form-control"
+                                value="<%= session.user.username %>" disabled >
+                        </div>
+                        <div class="col col-md-12">
+                            <label>Full Name *</label>
+                            <input type="text" name="name" id="name" class="form-control"
+                                value="<%= session.user.name %>">
+                        </div>
+                        <div class="col-12 col-md-12 profileEmail">
+                            <label>Email Address *</label>
+                            <input type="email" id="email" class="form-control" value="<%= session.user.email %>"
+                                placeholder="name@email.com" name="email">
+                        </div>
+                        <div class="col-12 col-md-12 profileEmail">
+                            <label>Location Address *</label>
+                            <input type="text" id="address" class="form-control" value="<%= session.user.address %>"
+                                required placeholder="area - street no - building no - appartment no." name="address">
+                        </div>
+                        <div class="col-12 col-md-6 input-group mb-3 mt-3 d-flex flex-column">
+                            <label class="genderLabel">Birth Date *</label>
+                            <input type="date" id="date_of_birth" name="date_of_birth"
+                                min="1920-01-01" max="2018-12-31" value="<%= session.user.date_of_birth %>">
+                        </div>
+                        <div class="col-12 col-md-6 input-group mb-3 mt-3 d-flex flex-column">
+                            <label class="genderLabel">Gender *</label>
+                            <div>
+                                <select class="form-control" name="gender" id="gender" required>
+                                    <option disabled>Select gender-</option>
+                                    <option value="male" <%= session.user.gender === "male"? "selected": "" %> >Male</option>
+                                    <option value="female" <%= session.user.gender === "female"? "selected": "" %> >Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-6">
+                            <div class="profileinputImgs"  style="height: 102px !important;">
+                                <label>Profile Image</label>
+                                <input type="file" name="profile_picture" accept="image/*">
+                                <small class="form-text text-muted">Select profile image.</small>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <button id="submit" type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </div>
+                        <div class="col-6 camContainer">
+                            <label class="text-primary cameraLabel">Have a camera ? </label>
+                            <p>
+                                <a class="btn btn-primary" onclick="myFunction()" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    Click to add a live photo <i class="bi bi-arrow-down-square-fill"></i>
+                                </a>
+                            </p>
+                            <div class="collapse"  id="collapseExample">
+                                <div class="card card-body">
+                                    <div class="">
+                                        <video id="camera" class="productCam" autoplay></video>
+                                    </div>
+                                    <div class="">
+                                        <canvas class="canvDiv"></canvas>
+                                    </div>
+                                    <button type="button" class="btn btn-info w-100" 
+                                        id="takeScreenshot">Take ScreenShot</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-6 test">
+                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="custom-model-main">
+        <div class="custom-model-inner">
+            <!-- <div class="close-btn">×</div> -->
+            <div class="custom-model-wrap">
+                <div class="pop-up-content-wrap text-success">
+                    <h2 class="text-sucess">Confirmation</h2>
+                    <div style="display: flex;align-items: center; justify-content: space-evenly;">
+                        <p>Saved successfully </p>
+                        <h3 style="display: inline-block;"><i class="bi bi-check2-circle"></i></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-overlay"></div>
+    </div>
+
+
+<%- contentFor('script') %>
+    <!-- For scripts -->
+    <script src="/static/common/scripts/profileImage.js"></script>
+    <script>
+        let screenschot = false;
+        const canvas = document.querySelector("canvas");
+        const form = document.getElementById("add_profile_form");
+        const images = document.getElementsByClassName("profileinputImgs")[0];
+        const sendData = function(event) {
+            event.preventDefault();
+            if(images.style.display === "none"){
+                const name = document.querySelector("#name");
+                const email = document.querySelector("#email");
+                const address = document.querySelector("#address");
+                const date_of_birth = document.querySelector("#date_of_birth");
+                const gender = document.querySelector("#gender");
+                const formData  = new FormData();
+                formData.append("name", name.value);
+                formData.append("email", email.value);
+                formData.append("address", address.value);
+                formData.append("date_of_birth", date_of_birth.value);
+                formData.append("gender", gender.value);
+                formData.append("photo", canvas.toDataURL('image/png'));
+                fetch("/profile", {
+                    method: 'POST',
+                    body: formData
+                }).then(() =>{
+                    setTimeout(() => {
+                        location.href = location.href;
+                    }, 1500)
+                })
+                .catch(console.log)
+            }else{
+                console.log("YES");
+                form.removeEventListener("submit", sendData);
+                const recall = () => setTimeout(() => {
+                    console.log("try");
+                    form.submit.click()
+                    form.addEventListener("submit", sendData);
+                }, 1500);
+                recall();
+            }
+
+        }
+        form.addEventListener("submit", sendData);
+
+    async function videoTask(){
+
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+            let video = document.getElementById("camera");
+            video.srcObject = await navigator.mediaDevices.getUserMedia({video: true, audio: false});
+        }
+        document.getElementById("takeScreenshot").addEventListener("click", (event) => {
+            screenshot = true;
+            let video = document.getElementById("camera");
+            
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext("2d").drawImage(video, 0, 0);
+            
+        })
+
+    }
+    const main =  () => {
+        videoTask();
+    };
+
+    main();
+
+    function myFunction() {
+        
+        if (images.style.display === "none") {
+            images.style.display = "block";
+        } else {
+            images.style.display = "none";
+        }
+    }
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script>
+        // $("#submit").on('click', function() {
+        //     $(".custom-model-main").addClass('model-open');
+        // }); 
+        // $(".close-btn, .bg-overlay").click(function(){
+        //     $(".custom-model-main").removeClass('model-open');
+        // });
+
+        $('#add_profile_form').submit(function(e){
+            $(".custom-model-main").addClass('model-open');
+            }); 
+            $(".close-btn, .bg-overlay").click(function(){
+                $(".custom-model-main").removeClass('model-open');
+        });
+    </script>

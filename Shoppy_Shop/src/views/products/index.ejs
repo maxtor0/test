@@ -1,0 +1,21 @@
+<%- contentFor("title") %>
+Products
+
+
+<%- contentFor("styles") %>
+<!-- For CSS -->
+<link rel="stylesheet" href="/static/common/styles/products.css">
+
+
+<%- contentFor("content") %>
+<div class="container">
+    <div class="row">
+        <div class="row mb-4">
+        
+            <% products.forEach(product => { %>
+                <%- include("../item/snippets/item.ejs", {product:product}) %>
+            <% }); %>
+            
+        </div>
+    </div>
+</div>

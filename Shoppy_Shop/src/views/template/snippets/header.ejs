@@ -1,0 +1,54 @@
+<header>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light">
+        <a class="navbar-brand logo" href="/"><img src="/static/common/images/malik/logo.png" class="headerLogoImg"> Shoppy store</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll"
+            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end align-middle" id="navbarScroll">
+            <div class="profile">
+                <% if(!session.isAuth) { %>
+                    <h3><img class="headerImg1" src="/static/common/images/abd/profile.jpg"/></h3>
+                    <div class="btn-group HomeBottonMargin">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                            Hello. Log In
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item headerLinkColor" href="/login">Log in</a>
+                            <a class="dropdown-item headerLinkColor" href="/register">Register</a>
+                        </div>
+                    </div>
+                <% } %>
+                <% if(session.isAuth) { %>
+                <h3><img class="headerImg2" src="<%= (session.user.profile_picture || "/static/common/images/abd/profile.jpg") %>"/></h3>
+                
+                <!-- <p>test</p> -->
+                <div class="btn-group HomeBottonMargin">
+                    <div class="btn-group HomeBottonMargin">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                            <p class="profile-p">Hello, <%= session.user.name %> </p>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item headerLinkColor" href="/logout">Logout</a>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+            <div class="header-icons">
+                <h5 class="headerH5">
+                    <a href="#"><i class="bi bi-search"></i></a>
+                </h5>
+                <h5 class="headerH5">
+                    <a href="/profile"><i class="bi bi-person-fill"></i></a>
+                </h5>
+                <h5 class="headerH5">
+                    <a href="#"><i class="bi bi-heart-fill"></i></a>
+                </h5>
+                <h5 class="headerH5">
+                    <a href="/mycart"><i class="bi bi-cart"></i></a>
+                </h5>
+            </div>
+        </div>
+    </nav>
+</header>

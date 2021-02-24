@@ -1,0 +1,45 @@
+<%- contentFor('title') -%>
+Admin 
+<%- contentFor('content') -%>
+<h4> Products page</h4>
+    <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                                <table id="mytable" class="table table-bordred table-striped">
+                                    <thead>                           
+                                    <th>Product Name</th>
+                                        <th>Product ID</th>
+                                        <th>Supplier Address</th>
+                                        <th>Email</th>
+                                        <th>Contact</th>
+                                        <th>Actions</th>
+                                    </thead>
+                                    <tbody>
+                                        <% products.forEach(function(product) { %>
+
+                                            <%- include("./snippets/productssnippets.ejs", {product: product}) -%>
+                                        <% }) %>
+                                    </tbody>
+                                    
+                                </table>
+                                <nav aria-label="..." class="row" style="display: flex; align-items: center;justify-content: center;">
+                                    <ul class="pagination">
+                                        <li class="page-item">
+                                            <a class="page-link disabled"  tabindex="-1" style="color: gray;">Previous</a>
+                                        </li>
+                                        <li class="page-item active">
+                                            <span class="page-link">
+                                            1
+                                            <span class="sr-only">(current)</span>
+                                            </span>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link disabled"  tabindex="-1" style="color: gray;">Next</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                        </div>
+                    </div>
+                </div>
+    </div>

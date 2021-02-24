@@ -1,0 +1,20 @@
+<div class="basket-product">
+    <div class="item">
+    <div class="product-image">
+        <img src="<%= product.images[0].image %>" alt="Placholder Image 2" class="product-frame">
+    </div>
+    <div class="product-details">
+        <h1><strong><span class="item-quantity">4</span> x <%= product.name %> </strong></h1>
+        <p><strong>Navy, Size 38</strong></p>
+        <p>Product ID - <%= product.id %></p>
+    </div>
+    </div>
+    <div class="price">$<%= product.price %></div>
+    <div class="quantity">
+    <input type="number" value="4" min="1" max="5" class="quantity-field">
+    </div>
+    <div class="subtotal"><%= 4 * product.price %></div>
+    <div class="remove">
+        <button class="btn btn-danger btn-sm">Remove</button>
+    </div>
+</div>

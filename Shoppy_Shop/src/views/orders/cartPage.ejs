@@ -1,0 +1,77 @@
+<%- contentFor("title") %>
+    My Cart
+
+<%- contentFor("styles") %>
+<link rel="stylesheet" href="/static/common/styles/cart.css">
+
+<%- contentFor("content") %>    
+<!-- <div class="col col-md-4">
+    <div class="list-group">
+        <a href="/profile" class="list-group-item list-group-item-action noBORDER-RL active">
+            <div class="d-flex flex-row justify-content-between">
+                <p class="profileP">Personal Info</p>
+                <i class="bi bi-caret-right profile-icon"></i>
+            </div>
+        </a>
+        <a href="/profile/orders" class="list-group-item list-group-item-action noBORDER-RL">
+            <div class="d-flex flex-row justify-content-between">
+                <p class="profileP">My Orders</p>
+                <i class="bi bi-caret-right profile-icon"></i>
+            </div>
+        </a>
+        <a href="/mycart" class="list-group-item list-group-item-action noBORDER-RL">
+            <div class="d-flex flex-row justify-content-between">
+                <p class="profileP">My Cart</p>
+                <i class="bi bi-caret-right profile-icon"></i>
+            </div>
+        </a>
+        <a href="/logout" class="list-group-item list-group-item-action noBORDER-RL">
+            <div class="d-flex flex-row justify-content-between">
+                <p class="profileP">Logout</p>
+                <i class="bi bi-caret-right profile-icon"></i>
+            </div>
+        </a>
+    </div>
+</div> -->
+    <div class="basket col-md-6" >
+
+        <div class="basket-labels">
+        <ul>
+            <li class="item item-heading">Item</li>
+            <li class="price">Price</li>
+            <li class="quantity">Quantity</li>
+            <li class="subtotal">Subtotal</li>
+        </ul>
+        </div>
+        <% carts.forEach(function (cart){ %>
+            <%- include("./snippets/cartsnippet.ejs", {product:cart.product}) %>
+        <% }) %>
+    </div>
+    <aside id="sidebar" class="col-sm-12 col-md-12 col-lg-4">
+        <div class="summary">
+            <div class="summary-total-items"><span class="total-items"></span> Items in your Bag</div>
+            <div class="summary-subtotal">
+            <div class="subtotal-title">Subtotal</div>
+            <div class="subtotal-value final-value" id="basket-subtotal">130.00</div>
+
+            </div>
+            <div class="summary-delivery">
+            <select name="delivery-collection" class="summary-delivery-selection">
+                <option value="0" selected="selected">Select Collection or Delivery</option>
+                <option value="collection">Collection on Site</option>
+                <option value="first-class">1st Class</option>
+                <option value="second-class">2nd Class</option>
+                <option value="signed-for">Special Delivery</option>
+            </select>
+            </div>
+            <div class="summary-total">
+            <div class="total-title">Total</div>
+            <div class="total-value final-value" id="basket-total">130.00</div>
+            </div>
+            <div class="summary-checkout">
+            <button class="checkout-cta">Go to Secure Checkout</button>
+            </div>
+        </div>
+    </aside>
+
+   

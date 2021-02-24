@@ -1,0 +1,54 @@
+<%- contentFor('title') %>
+    Edit Product
+
+<%- contentFor("styles") %>
+<!-- For CSS -->
+<!-- <link rel="stylesheet" href="/static/common/styles/adminEdit.css"> -->
+
+
+<%- contentFor('content') %>
+    <div class="container">
+        <div class="mainAddProduct bg-secondary" style="margin-top: 50px;">
+            <form method="POST">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3"></div>
+                        <div class="col col-lg-6">
+                            <h2 class="H2">Edit product:</h2>
+                            <label class="text-warning addProductLabel">Product Name: <small>*Not Editable*</small></label>
+                            <input type="text" class="form-control bg-light" value="<%= product.name %>" disabled>
+                            <label class="text-warning addProductLabel">*Price:-$</label>
+                            <input type="number" name="price" min="1" 
+                                class="form-control bg-light" value="<%= product.price %>">
+                            <label class="text-warning addProductLabel">Description:</label>
+                            <textarea class="form-control bg-light" name="description" 
+                                rows="3"><%= product.description %></textarea>
+                            <br>
+                            <div class="btn-group btn-group-toggle adminEditAv" data-toggle="buttons">
+                                <h5 class="text-warning" style="margin-right: 10px;">*Availability:</h5>
+                                <label class="btn btn-info active">
+                                <input type="radio" value="1" name="is_available" checked>Yes
+                                </label>
+                                <label class="btn btn-info">
+                                <input type="radio" value="0" name="is_available">No
+                                </label>
+                            </div>
+                            <br>
+                            <label class="text-warning addProductLabel">*Stock:</label>
+                            <input type="number" name="stock" min="1" 
+                                class="form-control bg-light" value="<%= product.stock %>">
+                        </div>
+                        <div class="productSubmitBtn w-100">
+                            <button type="submit" class="btn btn-primary w-50 btn-md"
+                            style="margin-top: 8px;">Edit Product</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+<%- contentFor('script') %>
+    <!-- For scripts -->
+    <!-- <script src="/static/common/scripts/profileImage.js"></script> -->

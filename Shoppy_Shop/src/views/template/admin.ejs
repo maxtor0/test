@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title><%= defineContent('title') %></title>
+    <link rel="stylesheet" href="/static/common/styles/adminLogin.css">
+    <link rel="stylesheet" href="/static/common/styles/adminAdd.css">
+    <link rel="stylesheet" href="/static/common/styles/adminLogin.css">
+    <script src="https://kit.fontawesome.com/7f1419bc41.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="sidebar">
+    <div class="admin_info">
+        <div class="admin_image" style="display: flex; flex-direction: column; align-items: center;">
+            <img src="/static/common/images/abd/profile.jpg"  class="adminImg" alt="">
+        </div>
+        <div class="adminTopControllers">
+            <a href="/admin"><i class="fa fa-fw fa-home Home" ></i> Home</a>
+            <a href="/admin/orders"><i class="fa fa-fw fa-user"></i> Orders</a>
+            <a href="/admin/addproduct"></i><i class="fas fa-plus-circle"></i> Add Product</a>
+            <a href="/"><i class="fa fa-fw fa-newspaper-o"></i> Store Home</a>
+        </div>
+    </div>
+    <div class="controllers">
+        <a href="#maintenance" ><i class="fa fa-fw fa-wrench"></i> Maintenace</a>
+        <a href="#mail"><i class="fa fa-fw fa-envelope"></i> Mail Box</a>
+        <a href="#calendar"><i class="fa fa-fw fa-calendar"></i> Calendar</a>
+        <a href="#alert"><i class="fa fa-fw fa-bell"></i> Alerts</a>
+        <a href="#visits"><i class="fa fa-fw fa-map-marker"></i> Visits</a>
+        <a href="#contacts"><i class="fa fa-fw fa-address-book"></i> Contacts</a>
+        <a href="#settings"><i class="fa fa-fw fa-gears"></i> Settings</a>
+        <a href="/logout" style="margin-top: 30px;"><i class="fa fa-fw fa-arrow-circle-o-right"></i> Log Out</a>
+    </div>
+
+</div>
+<div class="main">
+    <h2>Welcome Back Admin!</h2>
+    <%- defineContent('content') -%>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <%- defineContent('scripts') -%>
+</body>
+</html>

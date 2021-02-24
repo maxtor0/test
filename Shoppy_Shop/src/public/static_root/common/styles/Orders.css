@@ -1,0 +1,262 @@
+body {
+  padding-top: -100px;
+}
+
+#content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.column {
+  width: 600px;
+  padding: 8px;
+}
+
+#featured {
+  display: flex;
+  max-width: 300px;
+  max-height: 400px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+}
+.featuredImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.thumbnail {
+  object-fit: cover;
+  max-width: 100px;
+  max-height: 80px;
+  cursor: pointer;
+  opacity: 0.5;
+  margin: 5px;
+  border: 1px solid black;
+}
+
+.thumbnail:hover {
+  opacity: 1;
+}
+
+.active {
+  opacity: 1;
+}
+
+#slide-wrapper {
+  max-width: 500px;
+  display: flex;
+  min-height: 100px;
+  align-items: center;
+}
+
+#slider {
+  width: 440px;
+  justify-content: center;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+}
+
+#slider::-webkit-scrollbar {
+  width: 8px;
+}
+
+#slider::-webkit-scrollbar-thumb {
+  background-color: #dede2e;
+  outline: 1px solid slategrey;
+  border-radius: 100px;
+}
+
+#slider::-webkit-scrollbar-thumb:hover {
+  background-color: #18b5ce;
+}
+
+.arrow {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.arrow:hover {
+  opacity: 0.5;
+  width: 35px;
+  height: 35px;
+}
+
+.productName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: 10px;
+}
+.priceBtn {
+  border: solid 1px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  background-color: white;
+}
+.currentPrice {
+  color: crimson;
+  font-size: x-large;
+}
+.pastPrice {
+  color: gray;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+
+.sizes {
+  margin-top: 6px;
+}
+.desc {
+  margin-top: -24px;
+}
+.ptitle {
+  text-align: center;
+  margin-top: 0;
+}
+.featuredImage {
+  margin-top: 20px;
+}
+
+.productName {
+  margin-top: 60px;
+  margin-bottom: -10px;
+}
+
+.ratingStars {
+  text-align: center;
+}
+
+.row2 {
+  margin-top: 20px;
+}
+
+#selectOpt {
+  height: 100%;
+  width: 100%;
+}
+
+hr {
+  border: 0;
+  clear: both;
+  display: block;
+  width: 100%;
+  height: 1px;
+}
+
+.card_img {
+  height: 240px;
+  width: 100%;
+  object-fit: contain;
+}
+
+.testimonialContainer {
+  border: 2px solid rgba(0, 0, 0, 0.363);
+  background-color: rgb(207, 235, 218);
+  border-radius: 5px;
+  padding: 16px;
+  margin: 16px 0;
+}
+.profilePic {
+  width: 100px;
+  height: 100px;
+}
+.testimonialContainer::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.testimonialContainer img {
+  float: left;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+.testimonialContainer span {
+  font-size: 24px;
+  font-weight: 500;
+  margin-right: 15px;
+  color: black;
+}
+.testimonialContainer p {
+  font-size: 18px;
+  font-style: oblique;
+}
+@media (max-width: 500px) {
+  .testimonialContainer {
+    text-align: center;
+  }
+  .testimonialContainer img {
+    margin: auto;
+    float: none;
+    display: block;
+  }
+}
+
+.caroImage {
+  height: 300px;
+  object-fit: cover;
+}
+
+/* This is the styling of the reviews  */
+.rating {
+  --star-size: 3; /* use CSS variables to calculate dependent dimensions later */
+  padding: 0; /* to prevent flicker when mousing over padding */
+  border: none; /* to prevent flicker when mousing over border */
+  unicode-bidi: bidi-override;
+  direction: rtl; /* for CSS-only style change on hover */
+  text-align: left; /* revert the RTL direction */
+  user-select: none; /* disable mouse/touch selection */
+  font-size: 3em; /* fallback - IE doesn't support CSS variables */
+  font-size: calc(
+    var(--star-size) * 1em
+  ); /* because `var(--star-size)em` would be too good to be true */
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+/* the stars */
+.rating > label {
+  display: inline-block;
+  position: relative;
+  width: 1.1em; /* magic number to overlap the radio buttons on top of the stars */
+  width: calc(var(--star-size) / 4 * 1.1em);
+}
+.rating > *:hover,
+.rating > *:hover ~ label,
+.rating:not(:hover) > input:checked ~ label {
+  color: transparent; /* reveal the contour/white star from the HTML markup */
+  cursor: inherit; /* avoid a cursor transition from arrow/pointer to text selection */
+}
+.rating > *:hover:before,
+.rating > *:hover ~ label:before,
+.rating:not(:hover) > input:checked ~ label:before {
+  content: "★";
+  position: absolute;
+  left: 0;
+  color: goldenrod;
+}
+.rating > input {
+  position: relative;
+  transform: scale(
+    3
+  ); /* make the radio buttons big; they don't inherit font-size */
+  transform: scale(var(--star-size));
+  /* the magic numbers below correlate with the font-size */
+  top: -0.5em; /* margin-top doesn't work */
+  top: calc(var(--star-size) / 6 * -1em);
+  margin-left: -2.5em; /* overlap the radio buttons exactly under the stars */
+  margin-left: calc(var(--star-size) / 6 * -5em);
+  z-index: 2; /* bring the button above the stars so it captures touches/clicks */
+  opacity: 0; /* comment to see where the radio buttons are */
+  font-size: initial; /* reset to default */
+}

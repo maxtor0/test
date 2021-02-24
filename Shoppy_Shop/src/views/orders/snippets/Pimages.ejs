@@ -1,0 +1,12 @@
+<div class="featuredImage">
+    <img id="featured" src="<%= images[0].image %>" alt="Reebok Almotio 5.0 Running Shoe Navy">
+</div>
+<div id="slide-wrapper">
+    <img id="slideLeft" class="arrow" src="/static/common/images/malik/leftArrow.png">
+    <div id="slider">
+        <% images.forEach(function(image){ %>
+            <img class="thumbnail active" src="<%= image.image %>" alt="Reebok Almotio 5.0 Running Shoe Navy">
+        <% }) %>
+    </div>
+    <img id="slideRight" class="arrow" src="/static/common/images/malik/rightArrow.png">
+</div>

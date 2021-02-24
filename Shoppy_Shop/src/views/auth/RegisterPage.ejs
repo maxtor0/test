@@ -1,0 +1,80 @@
+<%- contentFor("title") %>
+    Register
+
+<%- contentFor("styles") %>
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/common/styles/Register.css">
+
+<%- contentFor("content") %>
+    
+    <div class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+        <div class="container">
+            <div class="card login-card">
+                <div class="row no-gutters">
+                    <div class="col-md-5">
+                        <img src="/static/common/images/malik/clothesStore.jpg" alt="login" class="login-card-img">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card-body">
+                            <div class="brand-wrapper">
+                                
+                                <% if(locals.errors) { %>
+                                    <div class="alert alert-danger ">
+                                        <ul>
+                                    <% Object.keys(errors).forEach(key => { %>
+                                        <li><%= errors[key] %></li>
+                                    <% }) %>
+                                    </ul>
+                                </div>
+                                <% } %>
+                                <img src="/static/common/images/malik/logo.png" alt="logo" class="logo"
+                                    style="justify-content: center;">
+                            </div>
+                            <p class="login-card-description">Create an Account</p>
+                            <form method="POST">
+                                <div class="form-group">
+                                    <label for="name" class="sr-only">Account Name</label>
+                                    <input type="text" name="name" id="name" class="form-control bg-light"
+                                        placeholder="Full Name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="username" class="sr-only">Account Name</label>
+                                    <input type="text" name="username" id="username" class="form-control bg-light"
+                                            placeholder="Username">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email" class="sr-only">Email</label>
+                                    <input type="email" name="email" id="email" class="form-control bg-light"
+                                        placeholder="Email Address">
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label for="password" class="sr-only">Password</label>
+                                    <input type="password" name="password" id="password" class="form-control bg-light"
+                                        placeholder="Password">
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label for="confirm_password" class="sr-only">Password</label>
+                                    <input type="password" name="confirm_password" id="confirm_password" 
+                                    class="form-control bg-light" placeholder="Confirm Password">
+                                </div>
+
+                                <input name="login" id="login" class="btn btn-success btn-block login-btn mb-4"
+                                    type="submit" value="Create Account"/>
+                            </form>
+                            <p class="login-card-footer-text">Already have an account? <a
+                                    href="/login" class="text-reset">Login here</a></p>
+                                    <a href="/" class="text-reset">Home Page</a>
+                            <nav class="login-card-footer-nav">
+                                <a href="#!">Terms of use</a>
+                                <a href="#!">Privacy policy</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,9 @@
+<tr>
+    <td><%= product.name %></td>
+    <td><%= product.id %></td>
+    <td><%= product.owner.address %></td>
+    <td><%= product.owner.email %></td>
+    <td>+923335586757</td>
+    <td><a class="btn btn-warning" href="/admin/editproduct/<%= product.slug %>" >Edit</a></td>
+    <td><a class="btn btn-danger" href="/admin/deleteproduct/<%= product.slug %>"> Delete</a></td>
+</tr>

@@ -1,0 +1,38 @@
+<div class="card">
+    <div class="card-header" style="text-align: center;"> <%= product.name %> </div>
+    <div class="card-body bg-light">
+        <table class="table table-bordered">
+            <thead>
+                <tr style="background-color:#AAA;">
+                    <th>Product ID</th>
+                    <th>SHIPPED DATE</th>
+                    <th>STATUS</th>
+                    <th>ORDER AMOUNT</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background-color:#AAA;">
+                    <td><%= product.id %></td>
+                    <td><%= product.createdAt %></td>
+                    <td>Awating Delivery</td>
+                    <td>$<%= product.price %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <div class="row col align-self-start" >
+            <div class="row" style="margin-left: 10px;">
+                <!-- <img src="/static/common/images/malik/p11.jpg" class="orderImg"> -->
+                <!-- <img src="/static/common/images/malik/p12.jpg" class="orderImg"> -->
+                <!-- <img src="/static/common/images/malik/p14.jpg" class="orderImg"> -->
+                <img src="<%= product.images[0].image %>" class="orderImg">
+            </div>
+            <div  class="row col d-flex justify-content-end orderBtns">
+                <a class="btn btn-lg btn-outline-dark orderBtn">Order details</a>
+                <a class="btn btn-lg btn-outline-dark orderBtn">Track order</a>
+            </div>
+
+        </div>
+    </div>
+</div>

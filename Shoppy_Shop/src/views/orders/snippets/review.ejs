@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-md-2">
+        <img src="https://image.ibb.co/jw55Ex/def_face.jpg"
+            class="img img-rounded img-fluid" />
+    </div>
+    <div class="col-md-10">
+        <span style="font-size: x-large; font-weight: bold;">Customer</span>
+        <span>
+            <% for(let i=5; i>0; i--){ %> 
+                <% if(review.rate>=i){ %>
+                    <span> <i class="fa fa-star float-right text-warning"> </i></span>
+                <% } else { %>
+                    <span> <i class="fa fa-star float-right" style="color: lightgray"> </i></span>
+                <% } %> 
+            <% } %>
+
+        </span>
+        <div class="clearfix"></div>
+
+            <p><%= review.comment %></p>
+            <p class="text-secondary text-left"><%= review.createdAt %></p>
+
+    </div>
+</div>
